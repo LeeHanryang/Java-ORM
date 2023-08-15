@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -13,6 +14,8 @@ import javax.persistence.Id;
 public class Member {
     @Id
     private Long id;
+
+    @Column(unique = true, length = 10)
     private String name;
 
     protected Member() {}
