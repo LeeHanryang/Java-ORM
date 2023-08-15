@@ -7,12 +7,13 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(uniqueConstraints = )
 @Getter @Setter
 public class Member {
     @Id
     private Long id;
 
-    @Column(name = "name", insertable = true, updatable = true, nullable = false)
+    @Column(name = "name", nullable = false, unique = true)
     private String username;
 
     private Integer age;
