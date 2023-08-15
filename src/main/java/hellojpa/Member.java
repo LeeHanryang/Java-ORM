@@ -1,13 +1,10 @@
 package hellojpa;
 
-import lombok.Data;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Getter @Setter
@@ -15,14 +12,26 @@ public class Member {
     @Id
     private Long id;
 
-    @Column(unique = true, length = 10)
-    private String name;
+    @Column(name = "name", insertable = true, updatable = true, nullable = false)
+    private String username;
+
+    private Integer age;
+
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastModifiedDate;
+
+    @Lob
+    private String description;
+
+    @Transient
+    private int temp;
 
     protected Member() {}
-
-    public Member (Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 
 }
