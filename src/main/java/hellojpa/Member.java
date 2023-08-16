@@ -6,16 +6,15 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@TableGenerator(
+@SequenceGenerator(
         name = "MEMBER_SEQ_GENERATOR",
-        table = "MY_SEQUENCES",
-        pkColumnValue = "MEMBER_SEQ",
-        allocationSize = 1
-)
+        sequenceName = "MEMBER_SEQ", //매핑할 데이터베이스 시퀀스 이름
+        initialValue = 1, allocationSize = 50)
 @Getter @Setter
 public class Member {
-    @Id // 기본 키 매핑
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator = "MEMBER_SEQ_GENERATOR")
     private Long id;
 
     @Column(name = "name", nullable = false)
