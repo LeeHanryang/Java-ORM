@@ -24,4 +24,18 @@ public class Member {
 
     protected Member() {}
 
+//    public void changeTeam(Team team) {
+//        this.team = team;
+//        team.getMembers().add(this); // 연관 관계 편의 메서드
+//    }
+
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", team=" + team +
+                '}';
+    }
 }
